@@ -73,12 +73,7 @@ public class DialogItem : InteractableObject
     /// <param name="val"></param>
     public void SetDialogText(string val) 
     {
-        if (GameBaseData.language == Language.Chinese)
-        {
-            contentText.text = val;
-            return;
-        }
-        contentText.text = GetLanguageValue(GameBaseData.language);
+        SetTextLanguage(contentText, val);
     }
 
     /// <summary>

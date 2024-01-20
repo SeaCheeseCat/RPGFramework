@@ -309,7 +309,7 @@ public class MapConfig : Manager<MapConfig>
     /// <param name="pos">位置</param>
     /// <param name="isedit">是否是编辑器模式</param>
     /// <returns></returns>
-    public NpcBase CreateNpc(int id, Vector3 pos, Vector3 scale, Vector3 rotate, bool isedit)
+    public NpcBase CreateNpc(int id, Vector3 pos= default, Vector3 scale = default, Vector3 rotate = default, bool isedit = false)
     {
         var config = ConfigManager.GetConfigByID<NpcCfg>(id);
         GameObject model = null;
@@ -388,7 +388,7 @@ public class MapConfig : Manager<MapConfig>
     /// <param name="pos">位置</param>
     /// <param name="parent">父节点</param>
     /// <returns></returns>
-    public GameObject CreateModel(string path, Vector3 pos, Vector3 scanle, Vector3 rotate,Transform parent)
+    public GameObject CreateModel(string path, Vector3 pos = default, Vector3 scale = default, Vector3 rotate = default, Transform parent = null)
     {
         var npc = CreateModel(path, parent);
         if (npc == null)
@@ -396,9 +396,12 @@ public class MapConfig : Manager<MapConfig>
             Debug.LogError("Npc creation failed. Path not found: " + path);
             return null;
         }
-        npc.transform.localPosition = pos;
-        npc.transform.localScale = scanle;
-        npc.transform.localRotation = Quaternion.Euler(rotate.x, rotate.y, rotate.z);
+        if(pos != default)
+            npc.transform.localPosition = pos;
+        if(scale != default)
+            npc.transform.localScale = scale;
+        if(rotate != default)
+            npc.transform.localRotation = Quaternion.Euler(rotate.x, rotate.y, rotate.z);
         return npc;
     }
 

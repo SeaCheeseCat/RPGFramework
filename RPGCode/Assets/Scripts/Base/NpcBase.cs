@@ -8,37 +8,49 @@ using DG.Tweening;
 /// </summary>
 public class NpcBase : MonoBehaviour
 {
+    //Tip: ID
     public int ID;
-    public SpriteRenderer[] ModelSprite;
-    public DialogItem Dialog;
+    //Tip: 配置表数据
     public NpcCfg Cfg;
+    //Tip: 主物体
+    public GameObject owner;
+    //Tip: 物体身上的Rigidbody
+    [HideInInspector]
+    public Rigidbody2D m_Rigidbody;
+    //Tip: 主角的SpriteReader
+    [HideInInspector]
+    public SpriteRenderer m_spriteRenderer;
+    //Tip: 主角的Box
+    [HideInInspector]
+    public BoxCollider2D m_boxCollider2D;
 
-    private void Start()
+    /// <summary>
+    /// Base:awake
+    /// </summary>
+    public virtual void Awake()
     {
-        //OnCreate();
+        InitData();
     }
 
     /// <summary>
-    /// 模型统一改变颜色  （其实是2D纸片）
+    /// Init:
+    /// 初始化数据
     /// </summary>
-    public void ModelDoColor(Color color) 
+    public virtual void InitData()
     {
-        foreach (var item in ModelSprite)
-        {
-            item.color = color;
-        }
+        m_Rigidbody = owner.GetComponent<Rigidbody2D>();
+        m_spriteRenderer = owner.GetComponent<SpriteRenderer>();
+        m_boxCollider2D = owner.GetComponent<BoxCollider2D>();
     }
 
     /// <summary>
-    /// 模型统一改变透明度
+    /// Base:start
     /// </summary>
-    public void ModelDoFade(float val, float time = 0.2f) 
+    public virtual void Start()
     {
-        foreach (var item in ModelSprite)
-        {
-            item.DOFade(val, time);
-        }
+        OnCreate();
     }
+
 
     /// <summary>
     /// Callback:
@@ -58,35 +70,8 @@ public class NpcBase : MonoBehaviour
     public void InitConfigData() {
         if (Cfg == null)
             return;
-        if (Cfg.Dialog != "")
-            ItemManager.Instance.CreateDialogItem(this,Cfg.Dialog, Cfg.DialogLanguage);
-
-        if (Cfg.Islens)
-            GameManager.Instance.AddFacingCamera(this.transform);
     }
-
-    /// <summary>
-    /// Set:
-    /// 设置一个Dialog
-    /// </summary>
-    /// <param name="dialog"></param>
-    public void SetDialog(DialogItem dialog)
-    {
-        Dialog = dialog;
-    }
-
-    /// <summary>
-    /// Delete:
-    /// 删除一个Dialog
-    /// </summary>
-    public void DeleteDialog() 
-    {
-        if (Dialog != null)
-        {
-            Destroy(Dialog.gameObject);
-        }
-    }
-
+    
     /// <summary>
     /// Get:
     /// 获取该物体子物体下的一个可交互物体
@@ -127,6 +112,10 @@ public class NpcBase : MonoBehaviour
         }
         return result;
     }
+
+
+
+
 
 }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ExitUI : MonoBehaviour
 {
     public Button CloseBtn;
-
+    public Button TestBtn;
     private void Awake()
     {
         CloseBtn.onClick.AddListener(() =>
@@ -17,6 +17,11 @@ public class ExitUI : MonoBehaviour
             LoadManager.Instance.LoadScene("Init");
             GameBase.Instance.gameScene = GameScene.Init;*/
 
+        });
+
+        TestBtn.onClick.AddListener(() =>
+        {
+            LoadManager.Instance.LoadScene("House");
         });
     }
 

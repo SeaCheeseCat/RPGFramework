@@ -65,11 +65,12 @@
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Structures\ILoader.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Aspect Container\Container.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\SaveGameData\GameDataManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Manager\CameraUIControls.cs" />
     <Compile Include="Assets\Scripts\Framework\Game\Configs\Base\BaseLineData.cs" />
+    <Compile Include="Assets\Scripts\Game\Manager\CameraUIControls.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\ResourceLoad\ResourceManager.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Utils\CostTable.cs" />
     <Compile Include="Assets\Scripts\Framework\Tool\ButtonExtension.cs" />
+    <Compile Include="Assets\Scripts\Game\PlayerBase.cs" />
     <Compile Include="Assets\Scripts\Game\Event\InitialStoryEvent.cs" />
     <Compile Include="Assets\Scripts\UI\StoryUI.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Game\BaseGridHandler.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Math\FixedPoint\VInt3.cs" />
     <Compile Include="Assets\Scripts\Game\Data\MapConfigData.cs" />
     <Compile Include="Assets\Scripts\Framework\Utils\MassCtr.cs" />
+    <Compile Include="Assets\Scripts\Game\Manager\UnitManager.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Math\FixedPoint\VFactor.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Game\Utils\Md5Utils.cs" />
     <Compile Include="Assets\Scripts\Game\Manager\EventManager.cs" />
@@ -209,12 +211,12 @@
     <Compile Include="Assets\Scripts\Framework\Tool\GameObjectUtils.cs" />
     <Compile Include="Assets\Scripts\Game\DialogItem.cs" />
     <Compile Include="Assets\Scripts\Game\Configs\Types\ResType\TaskCfg.cs" />
-    <Compile Include="Assets\Scripts\Game\PlayerContrl.cs" />
     <Compile Include="Assets\Scripts\Game\Configs\Types\ResType\NpcCfg.cs" />
     <Compile Include="Assets\Scripts\Framework\Utils\MathG.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Structures\IDestroy.cs" />
     <Compile Include="Assets\Scripts\Framework\Game\Configs\Base\BaseResData.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\Queue\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\Game\Player.cs" />
     <Compile Include="Assets\Scripts\Framework\Tool\INPC.cs" />
     <Compile Include="Assets\Scripts\Framework\Tool\IHouse.cs" />
     <Compile Include="Assets\Scripts\Game\Manager\TaskManager.cs" />
@@ -232,23 +234,19 @@
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Outline_Frag.hlsl" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-small-ships_CC-BY-NC\_angela-quidam_CC_license-readme_EN.txt" />
     <None Include="Assets\Resources\Shader\ToonShader_V2.shader" />
     <None Include="Assets\StreamingAssets\build_info.txt" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Function.hlsl" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Core.hlsl" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_ShadowCaster.hlsl" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-7+towers_CC-BY-NC\hello_there_and_welcome.txt" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Frag.hlsl" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-Quill-Noir_CC-BY-NC\_licence-lisezmoi_FR.txt" />
     <None Include="Assets\Resources\Shader\Shader\Comic_Transparent.shader" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Resources\Shader\Shader\Comic_Opaque.shader" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Macro.hlsl" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-Quill-Noir_CC-BY-NC\_license-readme_EN.txt" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Vert.hlsl" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -259,17 +257,14 @@
     <None Include="Assets\Resources\Materials\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-Quill-HorreurCosmique_CC-BY-NC\license-readme_EN.txt" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Outline_Vert.hlsl" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-Quill-HorreurCosmique_CC-BY-NC\licence-lisezmoi_FR.txt" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Resources\Shader\Shader\hlsl\Comic_Outline_Core.hlsl" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Resources\Other\Res\AngelaQuidam-illustrations-small-ships_CC-BY-NC\_angela-quidam_CC_licence-lisezmoi_FR.txt" />
     <None Include="Assets\Resources\Materials\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Resources\Shader\Shader\Comic_Cutout.shader" />
   </ItemGroup>
@@ -1170,16 +1165,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">

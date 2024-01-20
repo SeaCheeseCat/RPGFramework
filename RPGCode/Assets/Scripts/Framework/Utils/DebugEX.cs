@@ -1,23 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class DebugEX
 {
     public static void Log(params object[] ob)
     {
-        Debug.Log(GetLog(ob));
+        UnityEngine.Debug.Log(GetLog(ob));
     }
 
 
     public static void LogError(params object[] ob)
     {
-        Debug.LogError(GetLog(ob));
+        UnityEngine.Debug.LogError(GetLog(ob));
     }
 
     public static void LogWarrning(params object[] ob)
     {
-        Debug.LogWarning(GetLog(ob));
+        UnityEngine.Debug.LogWarning(GetLog(ob));
     }
 
     public static string GetLog(params object[] ob) 

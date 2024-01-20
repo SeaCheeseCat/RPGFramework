@@ -3055,8 +3055,10 @@ MonoBehaviour:
   - {fileID: 2590772480986175177}
   currentTabItem: {fileID: 0}
   lastTabItem: {fileID: 0}
+  currentSetItem: {fileID: 0}
+  lastSetItem: {fileID: 0}
   contentParents: {fileID: 3066889110029257166}
-  closeButton: {fileID: 3725690724198589055}
+  scrollRect: {fileID: 3462050482284051975}
 --- !u!1 &5289680159037502595
 GameObject:
   m_ObjectHideFlags: 0
@@ -4391,6 +4393,9 @@ MonoBehaviour:
   leftButton: {fileID: 8717771146180321760}
   rightButton: {fileID: 9027624691803361998}
   switchObj: {fileID: 0}
+  selectObj: {fileID: 0}
+  isSelect: 0
+  isAdjust: 0
 --- !u!1 &7630884625877092603
 GameObject:
   m_ObjectHideFlags: 0

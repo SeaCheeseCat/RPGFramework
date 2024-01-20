@@ -15,17 +15,21 @@ public class GameStart : MonoBehaviour
     }
     private void Start()
     {
+        InitGame();
+       
+        
+    }
+
+
+    public void InitGame()
+    {
+        MapConfig.Instance.InitData();
         if (GameBaseData.levelType == LevelType.COMMON)
         {
-            LevelSystem.Instance.Load(GameBaseData.Chapter, GameBaseData.Level);
+            //LevelSystem.Instance.Load(GameBaseData.Chapter, GameBaseData.Level);
             GameManager.Instance.LoadLevelData();
         }
-        else if (GameBaseData.levelType == LevelType.HAVESUBTITLE)
-        {
-            EventManager.Instance.TriggerEvent(GameBaseData.EventName);
-            LevelSystem.Instance.Load(GameBaseData.Chapter, GameBaseData.Level);
-            GameManager.Instance.LoadLevelData();
-        }
+        GameManager.Instance.player = UnitManager.Instance.CreateNpc<Player>(1);
     }
 
 

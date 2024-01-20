@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 212017654}
   - component: {fileID: 212017656}
   - component: {fileID: 212017655}
+  - component: {fileID: 212017657}
   m_Layer: 5
   m_Name: SetText
   m_TagString: Untagged
@@ -380,6 +381,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212017653}
   m_CullTransparentMesh: 1
+--- !u!114 &212017657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212017653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f9d9b1f5395524b8a1bce1929dd754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
+  languageItem:
+    id: 0
+    ChineseLanguage: 
+    languages: []
+  chineseValue: 
 --- !u!1 &239638450
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,38 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
 --- !u!81 &239638452
 AudioListener:
   m_ObjectHideFlags: 0
@@ -829,6 +816,7 @@ GameObject:
   - component: {fileID: 1154304505}
   - component: {fileID: 1154304507}
   - component: {fileID: 1154304506}
+  - component: {fileID: 1154304508}
   m_Layer: 5
   m_Name: ContinueText
   m_TagString: Untagged
@@ -897,6 +885,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154304504}
   m_CullTransparentMesh: 1
+--- !u!114 &1154304508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154304504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f9d9b1f5395524b8a1bce1929dd754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  languageItem:
+    id: 0
+    ChineseLanguage: 
+    languages: []
+  chineseValue: 
 --- !u!1 &1221868041
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,17 +933,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 1
 --- !u!108 &1221868043
 Light:
   m_ObjectHideFlags: 0
@@ -1377,6 +1372,7 @@ GameObject:
   - component: {fileID: 1684061256}
   - component: {fileID: 1684061258}
   - component: {fileID: 1684061257}
+  - component: {fileID: 1684061259}
   m_Layer: 5
   m_Name: NewGameText
   m_TagString: Untagged
@@ -1445,6 +1441,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684061255}
   m_CullTransparentMesh: 1
+--- !u!114 &1684061259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684061255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f9d9b1f5395524b8a1bce1929dd754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  languageItem:
+    id: 0
+    ChineseLanguage: 
+    languages: []
+  chineseValue: 
 --- !u!1 &1753432045
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
@@ -18,13 +19,7 @@ public class Item : MonoBehaviour
     /// </summary>
     public void InitLanguage(Dictionary<Language, string> languageDic) 
     {
-        DebugEX.Log("初始化语言");
         this.languageDic = languageDic;
-
-        foreach (var item in languagearrayDic)
-        {
-            DebugEX.Log("初始化语言文本了", item.Key ,item.Value);
-        }
     }
 
     /// <summary>
@@ -55,11 +50,27 @@ public class Item : MonoBehaviour
     }
 
     /// <summary>
+    /// Set:
+    /// 设置多语言
+    /// </summary>
+    /// <param name="contentText"></param>
+    /// <param name="val"></param>
+    public void SetTextLanguage(Text contentText, string val) 
+    {
+        if (GameBaseData.language == Language.Chinese)
+        {
+            contentText.text = val;
+            return;
+        }
+        contentText.text = GetLanguageValue(GameBaseData.language);
+    }
+
+    /// <summary>
     /// Get:
     /// 获取不同语言的文本值
     /// </summary>
     /// <param name="language"></param>
-    public string GetLanguageValue(Language language)
+    public  string GetLanguageValue(Language language)
     {
         if (languageDic.ContainsKey(language))
             return languageDic[language];

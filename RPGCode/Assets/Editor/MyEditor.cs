@@ -130,7 +130,7 @@ public  class MyEditor : EditorWindow
     {
         get
         {
-            string path = "../../All-Doe-s-Life-Res/All-Doe-s-Life-Tool/ExcelTool/ExcelConfig";
+            string path = "../Tool/ExcelTool/ExcelConfig";
             return path;
         }
     }

@@ -62,12 +62,16 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\ScenesMenuBuild.cs" />
     <Compile Include="Assets\Editor\FrameworkEditor.cs" />
+    <Compile Include="Assets\Editor\LevelBuildEditor.cs" />
     <Compile Include="Assets\Editor\LevelEditor.cs" />
+    <Compile Include="Assets\Editor\LevelDataEditor.cs" />
     <Compile Include="Assets\Editor\MyEditor.cs" />
     <Compile Include="Assets\Resources\Shader\Editor\ComicShaderGUI.cs" />
     <Compile Include="Assets\Editor\ScenesMenu.cs" />
+    <Compile Include="Assets\Editor\LevelSuccesTip.cs" />
     <Compile Include="Assets\Editor\GameSetEditor.cs" />
     <Compile Include="Assets\Editor\LanguageEditor.cs" />
+    <Compile Include="Assets\Editor\LevelLoadEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1042,16 +1046,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">

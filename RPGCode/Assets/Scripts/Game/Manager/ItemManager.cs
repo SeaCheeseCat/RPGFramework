@@ -15,7 +15,7 @@ public class ItemManager : SingleMono<ItemManager>
         item.SetFollow(npc);
         item.InitLanguage(languageValue);
         item.SetDialogText(content);
-        npc.SetDialog(item);
+        /*npc.SetDialog(item);*/
         item.transform.parent = npc.gameObject.transform;
         item.transform.localScale = new Vector3(1, 1, 1);
         item.transform.localPosition = new Vector3(0, 0, 0);
@@ -30,7 +30,7 @@ public class ItemManager : SingleMono<ItemManager>
     /// <param name="npc"></param>
     public void DeleteDialogItem(NpcBase npc)
     {
-        npc.DeleteDialog();
+       /* npc.DeleteDialog();*/
     }
 
     /// <summary>

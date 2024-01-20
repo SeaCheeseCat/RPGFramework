@@ -26,8 +26,9 @@ public class GameManager : SingleMono<GameManager>
     public float cameraRotateY;
     //Tip:跟随镜头旋转的物体
     public List<Transform> faceFollowTrs = new List<Transform>();
+    //Tip: 玩家
+    public Player player;
 
-    //Tip:当前焦点Npc
     public NpcBase FocusNpc
     {
         get { return currentNpc; }
@@ -172,10 +173,10 @@ public class GameManager : SingleMono<GameManager>
     /// </summary>
     public void OnKeyInput() 
     {
-        if (Input.GetKeyDown(KeyCode.E))
+      /*  if (Input.GetKeyDown(KeyCode.E))
            CameraUIControls.Instance.OpenCameraModle();
         else if (Input.GetKeyDown(KeyCode.R))
-           CameraUIControls.Instance.CloseCameraModle();
+           CameraUIControls.Instance.CloseCameraModle();*/
     }
 
     /// <summary>
@@ -203,8 +204,8 @@ public class GameManager : SingleMono<GameManager>
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject.tag != "NPC")
             {
-                if (currentNpc != null)
-                    currentNpc.ModelDoColor(Color.white);
+              /*  if (currentNpc != null)
+                    currentNpc.ModelDoColor(Color.white);*/
                 lastNpc = null;
                 currentNpc = null;
                 return;
@@ -218,13 +219,13 @@ public class GameManager : SingleMono<GameManager>
         {
             if (currentNpc != null)
             {
-                currentNpc.ModelDoColor(Color.white);
-                currentNpc = null;
+               /* currentNpc.ModelDoColor(Color.white);
+                currentNpc = null;*/
             }
             if (lastNpc != null)
             {
-                lastNpc.ModelDoColor(Color.white);
-                lastNpc = null;
+               /* lastNpc.ModelDoColor(Color.white);
+                lastNpc = null;*/
             }
             ResetNpc();
         }
@@ -240,7 +241,7 @@ public class GameManager : SingleMono<GameManager>
     {
         if (lastNpc != null)
         {
-            lastNpc.ModelDoColor(Color.white);
+            //lastNpc.ModelDoColor(Color.white);
         }
         var npc = obj.GetComponent<NpcBase>();
         NPCManager.Instance.SignNpc(npc);
@@ -255,15 +256,14 @@ public class GameManager : SingleMono<GameManager>
     {
         if (currentNpc != null)
         {
-            currentNpc.ModelDoColor(Color.white);
-            currentNpc = null;
+           /* currentNpc.ModelDoColor(Color.white);
+            currentNpc = null;*/
         }
         if (lastNpc != null)
         {
-            lastNpc.ModelDoColor(Color.white);
-            lastNpc = null;
+            /*lastNpc.ModelDoColor(Color.white);
+            lastNpc = null;*/
         }
-        NPCManager.Instance.ResetSignNpc();
     }
 
     /// <summary>

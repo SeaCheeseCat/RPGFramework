@@ -83,9 +83,6 @@ public class DocumentEditor
 }
 
 
-public class LoadEditor
-{
-}
 
 #region Hide Serialized
 public class YourAttributeProcessor<T> : OdinAttributeProcessor<T>

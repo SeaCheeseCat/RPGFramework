@@ -55,14 +55,10 @@ public class BaseStartUI : UIBase
     /// </summary>
     public void NewGameOnclick()
     {
-        //GameBaseData.levelType = LevelType.HAVESUBTITLE;
-        //GameBaseData.Chapter = 1001;
-        //GameBaseData.Level = 1;
-        LoadManager.Instance.LoadSceneAsync("Demo", null,
+        LoadManager.Instance.LoadSceneAsync("Game", null,
             () =>
             {
             });
-        //GameBaseData.EventName = "InitialStoryEvent";
     }
 
     /// <summary>
@@ -71,7 +67,7 @@ public class BaseStartUI : UIBase
     /// </summary>
     public void ContinueOnclick()
     {
-        UIManager.Instance.OpenUI<TestSaveUI>();
+        
     }
      
 }

@@ -86,28 +86,17 @@ public class NPCManager : Manager<NPCManager>
     public void SignNpc(NpcBase npc) 
     {
         GameManager.Instance.StopAllCoroutines();
-        npc.ModelDoColor(GameManager.Instance.lockColors[0]);
+        //npc.ModelDoColor(GameManager.Instance.lockColors[0]);
         for (int i = 0; i < npcs.Count; i++)
         {
             var item = npcs[i];
             if (item == npc)
                 continue;
-            item.ModelDoFade(0.5f, 0f);
+            //item.ModelDoFade(0.5f, 0f);
         }
     }
 
-    /// <summary>
-    /// Reset:
-    /// 重置一个标记的Npc
-    /// </summary>
-    public void ResetSignNpc() 
-    {
-        for (int i = 0; i < npcs.Count; i++)
-        {
-            var item = npcs[i];
-            item.ModelDoFade(1, 0);
-        }
-    }
+
 
     /// <summary>
     /// Recycle:

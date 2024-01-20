@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelEditor : OdinMenuEditorWindow
 {
-    public static LoadEditor loadeditor;
+    public static LevelLoadEditor loadeditor;
     public static BaseSetEditor baseseteditor;
     [MenuItem("阴暗地爬行.jpg/关卡编辑器")]
     private static void OpenWindow()
@@ -25,19 +25,19 @@ public class LevelEditor : OdinMenuEditorWindow
     {
         var tree = new OdinMenuTree();
         Scene scene = SceneManager.GetActiveScene();
-        if (scene.name != "Demo")
+        if (scene.name != "Game")
             return tree;
         MapConfig.Instance.InitData();
         tree.Selection.SupportsMultiSelect = false;
-        loadeditor = new LoadEditor();
+        loadeditor = new LevelLoadEditor();
         baseseteditor = new BaseSetEditor();
-        var dataeditor = new DataEditor();
+        var dataeditor = new LevelDataEditor();
         tree.Add("基础配置 □", baseseteditor);
         tree.Add("关卡列表 □", loadeditor);
-        tree.Add("生成配置 □", new BuildEditor());
+        tree.Add("生成配置 □", new LevelBuildEditor());
         tree.Add("关卡数据 ▲", dataeditor);
         tree.Add("Document", new DocumentEditor());
-        loadeditor.Init();
+        loadeditor.Init(baseseteditor);
         dataeditor.RefreshData();
         return tree;
     }
@@ -79,10 +79,10 @@ public class LevelEditor : OdinMenuEditorWindow
                 data.aduioPath = Musicclip.name;
             ArchiveManager.Instance.SaveMapConfigToJsonFile<MapConfigData>(data, Chapter, Level);
             DebugEX.Log("生成地图配置成功");
-            var window = GetWindow<SuccesTip>();
+            var window = GetWindow<LevelSuccesTip>();
             window.InitData(data);
             window.Show();
-            loadeditor.Init();
+            loadeditor.Init(baseseteditor);
             AssetDatabase.Refresh();
         }
 
@@ -176,75 +176,7 @@ public class LevelEditor : OdinMenuEditorWindow
         public Vector3 Lands;
 
     }
-
-
-    public class BuildEditor
-    {
-        [FoldoutGroup("详细配置")]
-        [EnumToggleButtons, LabelText("文件储存类型")]
-        public SaveDataType SomeEnumField;
-    }
-
-
-    public class DataEditor
-    {
-        [LabelText("当前章节"), ReadOnly]
-        public int chapter;
-        [LabelText("当前关卡"), ReadOnly]
-        public int level;
-
-        [FoldoutGroup("场景数据")]
-        [LabelText("Npc数据"),ReadOnly]
-        public List<int> Npcs;
-
-        [FoldoutGroup("场景数据")]
-        [LabelText("模型数据"), ReadOnly]
-        public List<int> Modes;
-
-        [FoldoutGroup("场景数据")]
-        [LabelText("粒子数据"), ReadOnly]
-        public List<int> Particles;
-
-        [FoldoutGroup("文件数据")]
-        [LabelText("文件列表"), ReadOnly]
-        public List<string> Files;
-
-
-        [Button(ButtonSizes.Large),LabelText("更新数据")]
-        public void RefreshData() 
-        {
-            MapConfig.Instance.InitData();
-            Npcs = new List<int>();
-            Modes = new List<int>();
-            Particles = new List<int>();
-            chapter = GameBaseData.Chapter;
-            level = GameBaseData.Level;
-
-            var npcdatas = MapConfig.Instance.Getmapnpcdatas();
-            foreach (var item in npcdatas)
-            {
-                Npcs.Add(item.ID);
-            }
-
-            var modeldatas = MapConfig.Instance.Getmapmodelsdatas();
-            foreach (var item in modeldatas)
-            {
-                Modes.Add(item.ID);
-            }
-
-            var particledatas = MapConfig.Instance.Getmapparticledatas();
-            foreach (var item in particledatas)
-            {
-                Particles.Add(item.ID);
-            }
-
-
-        }
-    }
-
-
-
-
+    
     public class DocumentEditor
     {
 
@@ -278,82 +210,6 @@ public class LevelEditor : OdinMenuEditorWindow
     }
 
 
-    public class LoadEditor
-    {
-        public void Init() 
-        {
-            LoadEditData();
-        }
-        [Title("关卡列表")]
-        [ReadOnly]
-        public List<string> LevelList;
-
-
-        [LabelText("章节"), FoldoutGroup("加载"), InfoBox("请确保该关卡已经配置完成（可以看看上面的关卡列表中有没有此关） (阴暗地飞行)")]
-        public int Chapter;
-        [LabelText("关卡"), FoldoutGroup("加载")]
-        public int Level;
-
-        [GUIColor(0, 1, 0)]
-        [Button(ButtonSizes.Large)]
-        [ FoldoutGroup("加载"),LabelText("加载关卡")]
-        private void LoadMap()
-        {
-            MapConfig.Instance.InitData();
-            var data = ArchiveManager.Instance.LoadMapConfigFromJson<MapConfigData>(Chapter,Level);
-            if (data == null)
-            {
-                DebugEX.LogError("读取关卡配置数据失败");
-                return;
-            }
-            MapConfig.Instance.LoadMapConfig(data,true);
-            baseseteditor.SetData(data.Charpter, data.Level, data.aduioPath);
-        }
-        
-        [GUIColor(1, 0f, 0)]
-        [Button(ButtonSizes.Medium)]
-        [FoldoutGroup("加载"), LabelText("删除关卡")]
-        private void DeleteLevel()
-        {
-            ArchiveManager.Instance.DeleteMapConfig(Chapter, Level);
-            LoadEditData();
-        }
-
-
-        [GUIColor(1, 1, 1)]
-        [Button(ButtonSizes.Large)]
-        [ButtonGroup("功能区"), LabelText("刷新关卡列表")]
-        private void LoadEditData()
-        {
-            LevelList = new List<string>();
-            var list = ArchiveManager.Instance.LaodMapConfigDic();
-            foreach (var item in list)
-            {
-                var name = ParseAndPrintLevelInfo(Path.GetFileName(item))+ " ["+ Path.GetFileName(item)+"]";
-                LevelList.Add(name);
-            }
-
-        }
-
-
-        string ParseAndPrintLevelInfo(string fileName)
-        {
-            // 使用正则表达式解析文件名
-            Match match = Regex.Match(fileName, @"mapconfig_(\d+)_(\d+).json");
-
-            if (match.Success)
-            {
-                int chapter = int.Parse(match.Groups[1].Value);
-                int level = int.Parse(match.Groups[2].Value);
-                return "第 " + chapter + " 章 " + " 第" + level + "关";
-            }
-
-            return "关卡解析失败";
-        }
-
-
-    }
-
     #region Hide Serialized
     public class YourAttributeProcessor<T> : OdinAttributeProcessor<T>
     {
@@ -384,79 +240,7 @@ public class LevelEditor : OdinMenuEditorWindow
         }
     }
 
-
-
-
-
 }
-
-
-public class SuccesTip : OdinEditorWindow
-{
-    
-    [Title("关卡配置生成成功！")]
-    public string path = "";
-
-    [LabelText("章节"), FoldoutGroup("数据"), InfoBox("生成成功后数据保存在路径下面，此处仅预览"),ReadOnly]
-    public int Chapter;
-    [LabelText("关卡"), FoldoutGroup("数据"), ReadOnly]
-    public int Level;
-
-    [FoldoutGroup("数据"), LabelText("Npc")]
-    public List<int> Npcs;
-    [FoldoutGroup("数据"), LabelText("模型")]
-    public List<int> Models;
-    [FoldoutGroup("数据"), LabelText("地面数据")]
-    public Vector3 Land;
-
-    [Button(ButtonSizes.Large)]
-    [ButtonGroup("功能区"), LabelText("打开路径")]
-    private void OpenPath()
-    {
-        DirectoryInfo direction = new DirectoryInfo(path);
-        System.Diagnostics.Process.Start(direction.FullName);
-    }
-
-    public void InitData(MapConfigData data) 
-    {
-        Npcs = new List<int>();
-        Chapter = data.Charpter;
-        Level = data.Level;
-
-        foreach (var item in data.mapnpcdata)
-        {
-            Npcs.Add(item.ID);
-        }
-
-        Land = new Vector3((float)data.maplanddata.x, (float)data.maplanddata.y, (float)data.maplanddata.z);
-        path = Application.dataPath+ "/Resources/Config/Map";
-    }
-    [Button(ButtonSizes.Large)]
-    [ButtonGroup("功能区"), LabelText("关闭")]
-    private void CloseWinds()
-    {
-        Close();
-    }
-
-    public static string PersistentDataPath
-    {
-        get
-        {
-            string path =
-#if UNITY_ANDROID
-         Application.persistentDataPath;
-#elif UNITY_IPHONE && !UNITY_EDITOR
-         Application.persistentDataPath;
-#elif UNITY_STANDLONE_WIN || UNITY_EDITOR
-         Application.persistentDataPath;
-#else
-        string.Empty;
-#endif
-            return path;
-        }
-    }
-}
-
 
 
 public enum SaveDataType

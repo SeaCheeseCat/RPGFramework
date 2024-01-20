@@ -1,6 +1,6 @@
 @echo "开始转表"
 
-@set unityPath=..\..\..\All-Doe-s-Life\Code
+@set unityPath=..\..\RPGCode
 @set codePath=Assets\Scripts\Game\Configs\Types
 @set dataPath=Assets\Resources\Config\Table
 @set TempunityPath=Out
