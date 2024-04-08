@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\Game\SideNPC.cs" />
     <Compile Include="Assets\Scripts\Game\Data\MapNpcData.cs" />
     <Compile Include="Assets\Scripts\Game\Plane.cs" />
+    <Compile Include="Assets\Scripts\Game\Data\GameConfigData.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\NavGraphNode.cs" />
     <Compile Include="Assets\Scripts\System\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\UIBase\UIModelBG.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Assets\Scripts\Game\Manager\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Graph\GraphEdge.cs" />
     <Compile Include="Assets\Scripts\Framework\Utils\ToolEx.cs" />
+    <Compile Include="Assets\KeyTipUI.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\UIBase\UIBase.cs" />
     <Compile Include="Assets\Scripts\UI\ExitGameSetUI.cs" />
     <Compile Include="Assets\Scripts\Framework\Common\Game\Managers\LanguageManager.cs" />

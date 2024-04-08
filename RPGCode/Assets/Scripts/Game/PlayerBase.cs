@@ -19,6 +19,8 @@ public class PlayerBase : NpcBase
     private const string interactableTag = "NPC";
     //Tip: 当前交互的
     private GameObject currentIneract;
+    //Tip: 上一次遇到可交互的
+    private GameObject lastIneract;
 
     public override void OnCreate()
     {
@@ -42,7 +44,9 @@ public class PlayerBase : NpcBase
     {
         Collider2D[] interactableObjects = GetInteractWithNearbyObjects();
         if ((interactableObjects == null || interactableObjects.Length <= 0) && currentIneract != null)
-            currentIneract = null;
+        {
+            OnExiatIneract();
+        }
         foreach (Collider2D interactableObject in interactableObjects)
         {
             if(currentIneract == null || (interactableObject.gameObject != null && currentIneract != interactableObject.gameObject))
@@ -58,6 +62,16 @@ public class PlayerBase : NpcBase
     public virtual void OnIneract(GameObject ineractobj)
     {
         currentIneract = ineractobj;
+        lastIneract = currentIneract;
+    }
+
+    /// <summary>
+    /// Callback:
+    /// 离开交互
+    /// </summary>
+    public virtual void OnExiatIneract()
+    {
+        currentIneract = null;
     }
 
     /// <summary>
@@ -82,6 +96,7 @@ public class PlayerBase : NpcBase
         if (hitUp && verticalInput > 0)
         {
             moveDirection.y = 0;
+
         }
 
         if (hitDown && verticalInput < 0)

@@ -60,7 +60,6 @@ public abstract class UIBase : MonoBehaviour
     /// </summary>
     internal virtual void OnDeath()
     {
-
     }
 
     /// <summary>
@@ -70,9 +69,18 @@ public abstract class UIBase : MonoBehaviour
     internal virtual void Close()
     {
         OnClose();
-        UIManager.Instance.CloseUI(GetType().Name);
         CloseWithAnimation();
     }
+
+    /// <summary>
+    /// Close:
+    /// 关闭自己这个UI
+    /// </summary>
+    internal virtual void CloseMySelf()
+    {
+        UIManager.Instance.CloseUI(GetType().Name);
+    }
+
 
     /// <summary>
     /// Callback:

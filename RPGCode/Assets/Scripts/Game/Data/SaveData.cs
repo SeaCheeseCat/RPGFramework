@@ -16,6 +16,8 @@ public class BaseData
     public int currentChapter;
     //Tip: 当前继续的关卡
     public int currentLevel;
+    //Tip: 是否是第一次进入
+    public bool firstEntry;
 }
 
 public class LevelData 

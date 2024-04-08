@@ -148,10 +148,21 @@ public class UIManager : Singleton<UIManager>
         {
             var ui = uis[UiName];
             ui.OnDeath();
+            ui.Close();
             if (ui.type == UiType.COMMON)
                 uis.Remove(UiName);
         }
     }
+
+    /// <summary>
+    /// Close:
+    /// 关闭自己这个UI
+    /// </summary>
+    internal virtual void CloseMySelf()
+    {
+        UIManager.Instance.CloseUI(GetType().Name);
+    }
+
 
     /// <summary>
     /// Close:

@@ -14,6 +14,8 @@ public class MapConfigData
     public List<MapModelData> mapmodeldatas;
     //Tip: 地图的粒子数据
     public List<MapParticleData> mapparticledatas;
+    //Tip: 地图的对话框数据
+    public List<MapDialogData> mapdialogdatas;
     //Tip: 地图的地面数据
     public MapLandData maplanddata;
     //Tip: 地图的背景音效

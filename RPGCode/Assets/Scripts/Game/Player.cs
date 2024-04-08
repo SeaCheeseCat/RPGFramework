@@ -13,5 +13,28 @@ public class Player : PlayerBase
     {
         base.OnIneract(ineractObj);
         DebugEX.Log("寻找到可交互的物体了", ineractObj.name);
+        UIManager.Instance.OpenUI<KeyTipUI>();
     }
+
+    public override void OnExiatIneract()
+    {
+        base.OnExiatIneract();
+        if (UIManager.Instance.GetUI<KeyTipUI>() != null)
+        {
+            UIManager.Instance.CloseUI<KeyTipUI>();
+        }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        OnInputKey();
+    }
+
+
+    public void OnInputKey()
+    { 
+        
+    }
+
 }

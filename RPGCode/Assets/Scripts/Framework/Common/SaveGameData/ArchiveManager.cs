@@ -14,10 +14,14 @@ public class ArchiveManager : Manager<ArchiveManager>
     private const string mapconfigPath = "Assets/Resources/Config/Map/";  //基础路径    
     //Tip: 多语言配置储存路径
     private const string languageconfigPath = "Assets/Resources/Config/Language/";
+    //Tip: 游戏配置文件目录
+    private const string gameconfigPath = "Assets/Resources/Config/GameConfig/";
     //Tip: 关卡资源的文件名字
     private const string mapConfigName = "mapconfig";
     //Tip: 多语言文件名字
     private const string languageFileName = "language.json";
+    //Tip: 游戏配置文件名字
+    private const string gameconfigFileName = "gameconfig.json";
     //Tip: 游戏中保存的数据
     private const string saveFileName = "data.json";
 
@@ -46,6 +50,20 @@ public class ArchiveManager : Manager<ArchiveManager>
         var path = languageconfigPath + languageFileName;
         SaveToJsonFile<T>(path, data);
     }
+
+    /// <summary>
+    /// Save:
+    /// 保存多语言数据
+    /// 保存在Resource文件夹下
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="data"></param>
+    public void SaveGameConfigToJsonFile<T>(T data)
+    {
+        var path = gameconfigPath + gameconfigFileName;
+        SaveToJsonFile<T>(path, data);
+    }
+
 
     /// <summary>
     /// Save:
@@ -117,6 +135,19 @@ public class ArchiveManager : Manager<ArchiveManager>
 
     /// <summary>
     /// Load:
+    /// 加载多语言数据
+    /// 语言数据在Resouce文件下
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    public T LoadGameConfigFromJson<T>()
+    {
+        var path = gameconfigPath + gameconfigFileName;
+        return LoadFromJsonFile<T>(path);
+    }
+
+    /// <summary>
+    /// Load:
     /// 载入存档数据从Json文件中
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -165,14 +196,10 @@ public class ArchiveManager : Manager<ArchiveManager>
     /// <param name="data"></param>
     private void SaveToJsonFile<T>(string filePath, T data)
     {
-        // 获取文件夹路径
         var directoryPath = Path.GetDirectoryName(filePath);
-        // 如果文件夹不存在，则创建文件夹
         if (!Directory.Exists(directoryPath))
             Directory.CreateDirectory(directoryPath);
-        // 将对象序列化为 JSON 字符串
         string jsonString = JsonMapper.ToJson(data);
-        // 写入 JSON 字符串到文件
         File.WriteAllText(filePath, jsonString);
     }
 

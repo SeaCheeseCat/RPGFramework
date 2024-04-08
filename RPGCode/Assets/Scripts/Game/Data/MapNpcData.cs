@@ -58,3 +58,19 @@ public class MapLandData
     public double rotatey;
     public double rotatez;
 }
+
+public class MapDialogData
+{
+    public int OwnerNpcID;
+    public int ID;
+    public string content;
+    public double x;
+    public double y;
+    public double z;
+    public double scalex;
+    public double scaley;
+    public double scalez;
+    public double rotatex;
+    public double rotatey;
+    public double rotatez;
+}

@@ -66,6 +66,7 @@
     <Compile Include="Assets\Editor\LevelEditor.cs" />
     <Compile Include="Assets\Editor\LevelDataEditor.cs" />
     <Compile Include="Assets\Editor\MyEditor.cs" />
+    <Compile Include="Assets\Editor\ConfigSuccesTip.cs" />
     <Compile Include="Assets\Resources\Shader\Editor\ComicShaderGUI.cs" />
     <Compile Include="Assets\Editor\ScenesMenu.cs" />
     <Compile Include="Assets\Editor\LevelSuccesTip.cs" />

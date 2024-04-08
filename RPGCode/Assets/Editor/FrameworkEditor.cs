@@ -36,6 +36,7 @@ public class FrameworkEditor : OdinMenuEditorWindow
         tree.Add("∂‡”Ô—‘", languageEditor);
         tree.Add("Document", documentEditor);
         languageEditor.LoadConfig();
+        gameEditor.OnCreate();
         return tree;
     }
 }
